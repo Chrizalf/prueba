@@ -161,7 +161,7 @@ function queryDetalleSuccess(tx, results) {
 			_foto = "assets/no_foto.png";
 		}
 		$("#foto_img").attr("src", _foto);
-		$("#nombre").html($.registro.nombre + " " + $.registro.apellidos);
+		$("#nombre").html($.registro.nombre);
 		$("#num_tel").html($.registro.telefono);
 		$("#telefono").attr("href", "tel:" + $.registro.telefono);
 		$("#label_mail").html("Mail: " + $.registro.email);
@@ -273,7 +273,7 @@ function queryDBInsertForm(tx){
 	var cat = $("#cajaCategorias").find("input:checked").val();
 	
 	//tx.executeSql("INSERT INTO agenda_curso (nombre,apellidos,telefono,categoria,foto,email) VALUES ('"+$("#ti_nombre").val()+"','"+$("#ti_apellidos").val()+"','"+$("#ti_telefono").val()+"','"+cat+"','"+$.imageURL+"','"+$("#ti_mail").val()+"')", [], newFormSuccess, errorDB);
-	tx.executeSql("INSERT INTO agenda_curso (nombre,foto,telefono,email,domicilio,categoria,nota) VALUES ('"+$("#ti_nombre").val()+"','"+$("#fotoo").val()+"','"+$("#ti_telefono").val()+"','"+$("#ti_mail").val()+"','"+$("#ti_domicilio").val()+"','"+cat+"','"+$("#ti_nota").val()+"')", [], newFormSuccess, errorDB);}
+	tx.executeSql("INSERT INTO agenda_curso (nombre,foto,telefono,email,domicilio,categoria,nota) VALUES ('"+$("#ti_nombre").val()+"','""','"+$("#ti_telefono").val()+"','"+$("#ti_mail").val()+"','"+$("#ti_domicilio").val()+"','"+cat+"','"+$("#ti_nota").val()+"')", [], newFormSuccess, errorDB);}
 function newFormSuccess(tx, results) {
 	var cat = $("#cajaCategorias").find("input:checked").val();
 	var lista = $("#lista_" + cat + " ul")
