@@ -53,7 +53,7 @@ function onDeviceReady(){
 
 
 /* 
-* creación de aa base de datos
+* creación de la base de datos
 */
 function creaDB(){
 	db.transaction(creaNuevaDB, errorDB, creaSuccess);
@@ -68,15 +68,16 @@ function creaNuevaDB(tx){
 	var sql = "CREATE TABLE IF NOT EXISTS agenda_curso ( "+
 		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 		"nombre VARCHAR(50), " +
-		"apellidos VARCHAR(50), " +
-		"telefono VARCHAR(30), " +
-		"categoria VARCHAR(30), " +
 		"foto VARCHAR(200), " + 
-		"email VARCHAR(30) )";
+		"telefono VARCHAR(30), " +
+		"email VARCHAR(30), " +
+		"domicilio VARCHAR(30), " +
+		"categoria VARCHAR(30), " +
+		"nota VARCHAR(30) )";
 		
 	tx.executeSql(sql);
 	
-	tx.executeSql("INSERT INTO agenda_curso (id,nombre,apellidos,telefono,categoria,foto,email) VALUES (1,'Mónica','Olivarría','+6699900970','amigo','','m.olivarria@ccumazatlan.mx')");
+	tx.executeSql("INSERT INTO agenda_curso (id,nombre,foto,telefono,email,domicilio,categoria,nota) VALUES (1,'Christian','','+6692677557','christian_5805@hotmail.com','','amigos','')");
 }
 
 
@@ -143,8 +144,6 @@ $(document).on("pagebeforeshow", "#detalle", function(){
 	}
 });
 
-
-
 function queryDBFindByID(tx) {
     tx.executeSql('SELECT * FROM agenda_curso WHERE id='+$.id, [], queryDetalleSuccess, errorDB);
 }
@@ -155,7 +154,6 @@ function queryDetalleSuccess(tx, results) {
 		mkLog("No se han recibido registros para la vista detalle");
 		navigator.notification.alert("No hay detalles para ese elemento");
 	}
-	
 	$.registro = results.rows.item(0);
 	$("#categoria").html($.registro.categoria);
 		var _foto = $.registro.foto;
@@ -167,6 +165,8 @@ function queryDetalleSuccess(tx, results) {
 		$("#num_tel").html($.registro.telefono);
 		$("#telefono").attr("href", "tel:" + $.registro.telefono);
 		$("#label_mail").html("Mail: " + $.registro.email);
+		$("#domicilio").html("Domicilio: " + $.registro.domicilio);
+		$("#nota").html("Nota: " + $.registro.nota);
 }
 
 
@@ -272,8 +272,8 @@ function saveNewForm(){
 function queryDBInsertForm(tx){
 	var cat = $("#cajaCategorias").find("input:checked").val();
 	
-	tx.executeSql("INSERT INTO agenda_curso (nombre,apellidos,telefono,categoria,foto,email) VALUES ('"+$("#ti_nombre").val()+"','"+$("#ti_apellidos").val()+"','"+$("#ti_telefono").val()+"','"+cat+"','"+$.imageURL+"','"+$("#ti_mail").val()+"')", [], newFormSuccess, errorDB);
-}
+	//tx.executeSql("INSERT INTO agenda_curso (nombre,apellidos,telefono,categoria,foto,email) VALUES ('"+$("#ti_nombre").val()+"','"+$("#ti_apellidos").val()+"','"+$("#ti_telefono").val()+"','"+cat+"','"+$.imageURL+"','"+$("#ti_mail").val()+"')", [], newFormSuccess, errorDB);
+	tx.executeSql("INSERT INTO agenda_curso (nombre,foto,telefono,email,domicilio,categoria,nota) VALUES ('"+$("#ti_nombre").val()+"','"+$("#fotoo").val()+"','"+$("#ti_telefono").val()+"','"+$("#ti_mail").val()+"','"+$("#ti_domicilio").val()+"','"+cat+"','"+$("#ti_nota").val()+"')", [], newFormSuccess, errorDB);}
 function newFormSuccess(tx, results) {
 	var cat = $("#cajaCategorias").find("input:checked").val();
 	var lista = $("#lista_" + cat + " ul")
@@ -299,7 +299,7 @@ function newFormSuccess(tx, results) {
 $(window).load(function(){
 
  $(function() {
-  $('#file-input').change(function(e) {
+  $('#fotoo').change(function(e) {
       addImage(e); 
      });
 
