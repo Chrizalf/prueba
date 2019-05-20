@@ -275,12 +275,12 @@ function queryDBInsertForm(tx){
 	//tx.executeSql("INSERT INTO agenda_curso (nombre,apellidos,telefono,categoria,foto,email) VALUES ('"+$("#ti_nombre").val()+"','"+$("#ti_apellidos").val()+"','"+$("#ti_telefono").val()+"','"+cat+"','"+$.imageURL+"','"+$("#ti_mail").val()+"')", [], newFormSuccess, errorDB);
 	tx.executeSql("INSERT INTO agenda_curso (nombre,foto,telefono,email,domicilio,categoria,nota) VALUES ('"+$("#ti_nombre").val()+"','"+$.imageURL+"','"+$("#ti_telefono").val()+"','"+$("#ti_mail").val()+"','"+$("#ti_domicilio").val()+"','"+cat+"','"+$("#ti_nota").val()+"')", [], newFormSuccess, errorDB);}
 
-/*function newFormSuccess(tx, results) {
+function newFormSuccess(tx, results) {
 	var cat = $("#cajaCategorias").find("input:checked").val();
 	var lista = $("#lista_" + cat + " ul")
 	
 	
-	var obj = $('<li id="li_'+results.insertId+'"><a href="#detalle" data-uid='+results.insertId+' class="linkDetalles"><div class="interior_lista"><img src="'+ $.imageUR +'" class="img_peq"/><span>' + $("#ti_nombre").val() + " " + $("#ti_telefono").val()+ " " + $("#ti_mail").val()+ " " + $("#ti_domicilio").val()+ " " + $("#ti_nota").val()+ '</span></div></a><a href="#form"  data-theme="a" data-uid='+results.insertId+'  class="linkForm">Predet.</a></li>');
+	var obj = $('<li id="li_'+results.insertId+'"><a href="#detalle" data-uid='+results.insertId+' class="linkDetalles"><div class="interior_lista"><img src="'+ $.imageUR +'" class="img_peq"/><span>' + $("#ti_nombre").val() + '</span></div></a><a href="#form"  data-theme="a" data-uid='+results.insertId+'  class="linkForm">Predet.</a></li>');
 	obj.find('.linkDetalles').bind('click', function(e){
 		$.id = $(this).data('uid');
 	});
@@ -288,13 +288,10 @@ function queryDBInsertForm(tx){
 	obj.find('.linkForm').bind('click', function(e){
 		$.id = $(this).data('uid');
 	});
-	lista.append(obj).listview('refresh');*/
+	lista.append(obj).listview('refresh');
 	
 	
 	$.mobile.changePage("#home");
-	function creaSuccess(){
-	window.localStorage.setItem("existe_db", 1);
-	cargaDatos();
 }
 
 
