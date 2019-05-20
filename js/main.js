@@ -53,7 +53,7 @@ function onDeviceReady(){
 
 
 /* 
-* creación de ña base de datos
+* creación de la base de datos
 */
 function creaDB(){
 	db.transaction(creaNuevaDB, errorDB, creaSuccess);
@@ -76,7 +76,7 @@ function creaNuevaDB(tx){
 		
 	tx.executeSql(sql);
 	
-	tx.executeSql("INSERT INTO agenda_curso (id,nombre,apellidos,telefono,categoria,foto,email) VALUES (1,'Christian','Zamora','6692677557','amigos','','christian_5805@hotmail.com')");
+	tx.executeSql("INSERT INTO agenda_curso (id,nombre,apellidos,telefono,categoria,foto,email) VALUES (1,'Christian','Zamora','6692677557','amigo','','christian_5805@hotmail.com')");
 }
 
 
