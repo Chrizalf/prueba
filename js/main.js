@@ -68,15 +68,16 @@ function creaNuevaDB(tx){
 	var sql = "CREATE TABLE IF NOT EXISTS agenda_curso ( "+
 		"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 		"nombre VARCHAR(50), " +
-		"apellidos VARCHAR(50), " +
-		"telefono VARCHAR(30), " +
-		"categoria VARCHAR(30), " +
 		"foto VARCHAR(200), " + 
-		"email VARCHAR(30) )";
+		"telefono VARCHAR(30), " +
+		"email VARCHAR(30), " +
+		"domicilio VARCHAR(30), " +
+		"categoria VARCHAR(30), " +
+		"nota VARCHAR(30) )";
 		
 	tx.executeSql(sql);
 	
-	tx.executeSql("INSERT INTO agenda_curso (id,nombre,apellidos,telefono,categoria,foto,email) VALUES (1,'Christian','Zamora','6692677557','amigo','','christian_5805@hotmail.com')");
+	tx.executeSql("INSERT INTO agenda_curso (id,nombre,foto,telefono,email,domicilio,categoria,nota) VALUES (1,'Christian','','+6692677557','christian_5805@hotmail.com','','amigos','')");
 }
 
 
@@ -143,8 +144,6 @@ $(document).on("pagebeforeshow", "#detalle", function(){
 	}
 });
 
-
-
 function queryDBFindByID(tx) {
     tx.executeSql('SELECT * FROM agenda_curso WHERE id='+$.id, [], queryDetalleSuccess, errorDB);
 }
@@ -155,7 +154,6 @@ function queryDetalleSuccess(tx, results) {
 		mkLog("No se han recibido registros para la vista detalle");
 		navigator.notification.alert("No hay detalles para ese elemento");
 	}
-	
 	$.registro = results.rows.item(0);
 	$("#categoria").html($.registro.categoria);
 		var _foto = $.registro.foto;
@@ -163,10 +161,12 @@ function queryDetalleSuccess(tx, results) {
 			_foto = "assets/no_foto.png";
 		}
 		$("#foto_img").attr("src", _foto);
-		$("#nombre").html($.registro.nombre + " " + $.registro.apellidos);
+		$("#nombre").html($.registro.nombre);
 		$("#num_tel").html($.registro.telefono);
 		$("#telefono").attr("href", "tel:" + $.registro.telefono);
 		$("#label_mail").html("Mail: " + $.registro.email);
+		$("#domicilio").html("Domicilio: " + $.registro.domicilio);
+		$("#nota").html("Nota: " + $.registro.nota);
 }
 
 
@@ -272,14 +272,15 @@ function saveNewForm(){
 function queryDBInsertForm(tx){
 	var cat = $("#cajaCategorias").find("input:checked").val();
 	
-	tx.executeSql("INSERT INTO agenda_curso (nombre,apellidos,telefono,categoria,foto,email) VALUES ('"+$("#ti_nombre").val()+"','"+$("#ti_apellidos").val()+"','"+$("#ti_telefono").val()+"','"+cat+"','"+$.imageURL+"','"+$("#ti_mail").val()+"')", [], newFormSuccess, errorDB);
-}
+	//tx.executeSql("INSERT INTO agenda_curso (nombre,apellidos,telefono,categoria,foto,email) VALUES ('"+$("#ti_nombre").val()+"','"+$("#ti_apellidos").val()+"','"+$("#ti_telefono").val()+"','"+cat+"','"+$.imageURL+"','"+$("#ti_mail").val()+"')", [], newFormSuccess, errorDB);
+	tx.executeSql("INSERT INTO agenda_curso (nombre,foto,telefono,email,domicilio,categoria,nota) VALUES ('"+$("#ti_nombre").val()+"','"+$("#ti_fotoo").val()+"','"+$("#ti_telefono").val()+"','"+$("#ti_mail").val()+"','"+$("#ti_domicilio").val()+"','"+cat+"','"+$("#ti_nota").val()+"')", [], newFormSuccess, errorDB);}
+
 function newFormSuccess(tx, results) {
 	var cat = $("#cajaCategorias").find("input:checked").val();
 	var lista = $("#lista_" + cat + " ul")
 	
 	
-	var obj = $('<li id="li_'+results.insertId+'"><a href="#detalle" data-uid='+results.insertId+' class="linkDetalles"><div class="interior_lista"><img src="'+ $.imageUR +'" class="img_peq"/><span>' + $("#ti_nombre").val() + " " + $("#ti_apellidos").val()+ '</span></div></a><a href="#form"  data-theme="a" data-uid='+results.insertId+'  class="linkForm">Predet.</a></li>');
+	var obj = $('<li id="li_'+results.insertId+'"><a href="#detalle" data-uid='+results.insertId+' class="linkDetalles"><div class="interior_lista"><img src="'+ $.imageUR +'" class="img_peq"/><span>' + $("#ti_nombre").val() + '</span></div></a><a href="#form"  data-theme="a" data-uid='+results.insertId+'  class="linkForm">Predet.</a></li>');
 	obj.find('.linkDetalles').bind('click', function(e){
 		$.id = $(this).data('uid');
 	});
