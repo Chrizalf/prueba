@@ -63,7 +63,7 @@
       </div>
   <div align="center" data-role="footer">
 	  
-	  <a href="#Dialog1"><img src="themes/images/icons-png/info-black.png" width="100%" alt=""></a>
+	  <a href="#confirmacion"><img src="themes/images/icons-png/info-black.png" width="100%" alt=""></a>
 	  <a href="#form"><img src="themes/images/icons-png/arrow-r-black.png" width="100%" alt=""></a>
 	  
   </div>
@@ -267,15 +267,15 @@
 		
 		<!--Pagina de dialogo-->
 		
-    <div id="Dialog1">
-		<h5> Aplicación desarrollada mediante PhoneGap para Proyecto Final<h5>
-		<h5> Por Christian Zamora - Mayo de 2019<h5>
-		</div>
-    <script type="text/javascript">
-$(function() {
-	$( "#Dialog1" ).dialog(); 
-});
-    </script>
+<div id="confirmacion" style="display: none"><p>¿Está seguro de que desea registrar el candidato?</p>
+	<p><small>* El candidato quedará en estado "Pendiente de confirmar"</small></p>	
+</div>
+		
+<script>
+	
+	function Registrar(){		$("#confirmacion").dialog({			modal: true,			title: "Registro de candidato",			width: 500,			resizable: false,			show: {		        effect: "blind",		        duration: 1000		    },		    hide: {		        effect: "explode",		        duration: 1000		    },			buttons:{				"Sí":function(){					$("#confirmacion").dialog("close");					},				"No":function(){					$("#confirmacion").dialog("close");					}			}		});	}
+		
+</script>
 			
 			
 			
