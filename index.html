@@ -266,22 +266,30 @@
 		
 		
 		<!--Pagina de dialogo-->
-		
-<div id="confirmacion" style="display: none"><p>¿Está seguro de que desea registrar el candidato?</p>
-	<p><small>* El candidato quedará en estado "Pendiente de confirmar"</small></p>	
-</div>
-		
-<script>
-	
-	function Registrar(){		$("#confirmacion").dialog({			modal: true,			title: "Registro de candidato",			width: 50,			resizable: false,			show: {		        effect: "blind",		        duration: 100		    },		    hide: {		        effect: "explode",		        duration: 1000		    },			buttons:{				"Sí":function(){					$("#confirmacion").dialog("close");					},				"No":function(){					$("#confirmacion").dialog("close");					}			}		});	}
-		
-</script>
-			
-			
-			
-			
-			
-			
+    <div id="confirmacion">Content for New Dialog Goes Here</div>
+    <script type="text/javascript">
+function Registrar(){		
+	$("#confirmacion").dialog({			
+		modal: true,			
+		title: "Registro de candidato",			
+		width: 500,			
+		resizable: false,			
+		show: {		        
+			effect: "blind",		        
+			duration: 1000		    
+		},		    
+		hide: {		        
+			effect: "explode",		        
+			duration: 1000		    
+		},			
+		buttons:{				
+			"Sí":function(){					
+				$("#confirmacion").dialog("close");					
+			}
+		}		
+	});	
+}
+        </script>
     </body>
 </html>
 
