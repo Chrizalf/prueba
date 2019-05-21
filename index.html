@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Hello PhoneGap</title>
+    <title>Catalogo de Servicios</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
         <meta charset="utf-8">
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div data-role="content">
-      <div align="center"><img src="images/icono.png" width="290" height="174" alt="tu imagen"></div>
+      <div align="center"><img src="images/icono.png" width="290" height="174"></div>
         <div data-role="collapsible-set">
           <div data-role="collapsible" id="lista_comida">
             <h3>Comida</h3>
@@ -63,7 +63,7 @@
       </div>
   <div align="center" data-role="footer">
 	  
-	  <a href="#confirmacion"><img src="themes/images/icons-png/info-black.png" width="100%" alt=""></a>
+	  <a href="#dialogo"><img src="themes/images/icons-png/info-black.png" width="100%" alt=""></a>
 	  <a href="#form"><img src="themes/images/icons-png/arrow-r-black.png" width="100%" alt=""></a>
 	  
   </div>
@@ -161,7 +161,7 @@
 	  <div align="center" data-role="footer">
 	  
 	  <a href="#home"><img src="themes/images/icons-png/arrow-l-black.png" width="100%" alt=""></a>
-	  <a href="#Dialog1"><img src="themes/images/icons-png/info-black.png" width="100%" alt=""></a>
+	  <a href="#dialogo"><img src="themes/images/icons-png/info-black.png" width="100%" alt=""></a>
 	  <a href="#acerca"><img src="themes/images/icons-png/arrow-r-black.png" width="100%" alt=""></a>
 	  
   </div>
@@ -186,28 +186,6 @@
         <button id="b_buscar">Buscar</button>
       </div>
     </div>
-    
-    
-    
-   <!-- formulario de envío de mails-->
-    <div data-role="page" id="mail_page">
-      <div data-role="header">
-      	<div class="ui-btn-left">
-            <a href="#" data-role="button" data-inline="true" data-icon="back" data-iconpos="notext" data-rel="back">Volver</a>
-        	</div>
-        <h1>Email</h1>
-      </div>
-      <div data-role="content">
-        <div data-role="fieldcontain">
-          <input type="text" name="ti_asunto" id="ti_asunto" value="" placeholder="asunto"  />
-        </div>
-        <div data-role="fieldcontain">
-          <textarea cols="40" rows="8" name="ta_body" id="ta_body" placeholder="Este es el cuerpo del mensaje"></textarea>
-        </div>
-        <button id="b_enviar">Enviar</button>
-      </div>
-    </div>
-    
     
     
     
@@ -244,21 +222,28 @@
       	<div class="ui-btn-left">
             <a href="#" data-role="button" data-inline="true" data-icon="back" data-iconpos="notext" data-rel="back">Volver</a>
         	</div>
-        <h1>Ayuda</h1>
+        <h1>Acerca de mi</h1>
       </div>
       <div data-role="content">
-     	 <ul id="listaAyuda">
-        	<li>Usa el + para añadir contactos</li>
-            <li>Con el segundo botón del header podrás añadir contactos de tu agenda</li>
-            <li>Selecciona la categoría de contactos y podrás verlos</li>
+     	 <ul id="listaInfo">
+			<div><img src="images/AcercaDeMi.png" width="190" height="220"></div>
+        	<li>Nombre: Christian Zamora Alfaro</li>
+            <li>Carrera: Licenciatura en Ingenieria en Sistemas de Informacion</li>
+            <li>Materia: Desarrollo de Aplicaciones para Comercio Electrónico</li>
             <li>Haz click en el ojo para ver los detalles del contacto y para actuar sobre él</li>
         </ul>
+		  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="hosted_button_id" value="UKJW7GQ2Z3GXU" />
+<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donar con el botón PayPal" />
+<img alt="" border="0" src="https://www.paypal.com/es_MX/i/scr/pixel.gif" width="1" height="1" />
+</form>
       </div>
 		
   <div align="center" data-role="footer">
 	  
 	  <a href="#form"><img src="themes/images/icons-png/arrow-l-black.png" width="100%" alt=""></a>
-	  <a href="#Dialog1"><img src="themes/images/icons-png/info-black.png" width="100%" alt=""></a>
+	  <a href="#dialogo"><img src="themes/images/icons-png/info-black.png" width="100%" alt=""></a>
 	  <a href="#infoservicio"><img src="themes/images/icons-png/arrow-r-black.png" width="100%" alt=""></a>
 	  
   </div>
@@ -268,15 +253,15 @@
 		
 		
 <!--Pagina de dialogo-->
-<div id="confirmacion" style="display: none">		
-	<p>¿Está seguro de que desea registrar el candidato?</p>		
-	<p><small>* El candidato quedará en estado "Pendiente de confirmar"</small></p>	
+<div id="dialogo">		
+	<p>Aplicación desarrollada mediante PhoneGap para Proyecto Final</p>		
+	<p><small>Por Christian Zamora - Mayo de 2019</small></p>	
 </div>
 		
 		
     <script>
 function Registrar(){		
-	$("#confirmacion").dialog({			
+	$("#dialogo").dialog({			
 		modal: false,			
 		title: "Registro de candidato",			
 		width: 50,			
@@ -291,13 +276,13 @@ function Registrar(){
 		},			
 		buttons:{				
 			"Sí":function(){					
-				$("#confirmacion").dialog("close");					
+				$("#dialogo").dialog("close");					
 			}
 		}		
 	});	
 }
 $(function() {
-	$( "#confirmacion" ).dialog(); 
+	$( "#dialogo" ).dialog(); 
 });
     </script>
     </body>
