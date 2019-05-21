@@ -73,7 +73,7 @@ function creaNuevaDB(tx){
 		
 	tx.executeSql(sql);
 	
-	tx.executeSql("INSERT INTO agenda_curso (id,nombre,foto,telefono,email,domicilio,categoria,nota) VALUES (1,'Christian','','+6692677557','christian_5805@hotmail.com','','amigos','')");
+	tx.executeSql("INSERT INTO agenda_curso (id,nombre,foto,telefono,email,domicilio,categoria,nota) VALUES (1,'Christian','','6692677557','christian_5805@hotmail.com','Calle uno #3300','amigos','Prueba')");
 }
 
 
@@ -236,14 +236,14 @@ function saveEditForm(){
 
 function queryDBUpdateForm(tx){
 	var cat = $("#cajaCategorias").find("input:checked").val();
-	tx.executeSql('UPDATE agenda_curso SET nombre="'+$("#ti_nombre").val()+'", apellidos="'+$("#ti_apellidos").val()+'",telefono="'+$("#ti_telefono").val()+'",email="'+$("#ti_mail").val()+'",categoria="'+cat+'",foto = "'+$.imageURL+'" WHERE id='+$.id);
+	tx.executeSql('UPDATE agenda_curso SET nombre="'+$("#ti_nombre").val()+'",foto = "'+$.imageURL+'",telefono="'+$("#ti_telefono").val()+'",email="'+$("#ti_mail").val()+'",domicilio="'+$("#ti_domicilio").val()+'",categoria="'+cat+'",nota="'+$("#ti_nota").val()+'" WHERE id='+$.id);
 }
 function updateFormSuccess(tx) {
 	var selector = $("#li_"+$.id);
 	
 	var selector = $("#li_"+$.id).clone(true);
 	selector.find("img").attr("src", $.imageURL);
-	selector.find("a:first").find("span").html($("#ti_nombre").val() + " " + $("#ti_apellidos").val());
+	selector.find("a:first").find("span").html($("#ti_nombre").val());
 	
 	
 	$("#li_"+$.id).remove();
