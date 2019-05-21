@@ -9,14 +9,11 @@ function mkLog(text){
 	var txt = i_log + " - " + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds() + ": " + text;
 	i_log++;
 	console.log(txt);
-	//$("#log").append(txt  + "<br>");
 }
 
 
 
-/* 
-* variables de la aplicación
-*/
+
 	var existe_db
 	var db
 	
@@ -31,7 +28,6 @@ function onBodyLoad() {
 
 function onDeviceReady(){
 	mkLog("Aplicación cargada y lista");
-    //navigator.notification.alert("PhoneGap is working");
 	
 	existe_db = window.localStorage.getItem("existe_db");
 	db = window.openDatabase("agenda_curso", "1.0", "DB del curso Phonegap", 200000);
@@ -205,9 +201,10 @@ function queryFormSuccess(tx, results) {
 		}
 		$("#fotoEdit_img").attr("src", $.imageURL);
 		$("#ti_nombre").val($.registro.nombre);
-		$("#ti_apellidos").val($.registro.apellidos);
+		$("#ti_domicilio").val($.registro.domicilio);
 		$("#ti_telefono").val($.registro.telefono);
 		$("#ti_mail").val($.registro.email);
+		$("#ti_nota").val($.registro.nota);
 		
 		$("#cat_"+$.registro.categoria).trigger("click").trigger("click");	//$("#cat_"+$.registro.categoria).attr("checked",true).checkboxradio("refresh");
 }
@@ -219,9 +216,10 @@ function initForm(){
 	
 	$("#fotoEdit_img").attr("src", $.imageURL);
 	$("#ti_nombre").val("");
-	$("#ti_apellidos").val("");
+	$("#ti_domicilio").val("");
 	$("#ti_telefono").val("");
 	$("#ti_mail").val("");
+	$("#ti_nota").val("");
 		
 	$("#cat_familia").trigger("click").trigger("click")
 }
