@@ -44,6 +44,13 @@ function onDeviceReady(){
 		 }else{
 			saveNewForm();
 		 }
+	 }
+	 	$("#b_eliminar").click(function(e){
+		if($.id != -1){
+		 	deleteForm();
+		 }else{
+			deleteForm();
+		 }
 	 });
 }
 
@@ -206,7 +213,7 @@ function queryFormSuccess(tx, results) {
 		$("#ti_mail").val($.registro.email);
 		$("#ti_nota").val($.registro.nota);
 		
-		$("#cat_"+$.registro.categoria).trigger("click").trigger("click");	//$("#cat_"+$.registro.categoria).attr("checked",true).checkboxradio("refresh");
+		$("#cat_"+$.registro.categoria).trigger("click").trigger("click");
 }
 $(document).on('pagebeforeshow', '#home', function(){ 
 	$.id = -1;
@@ -259,6 +266,39 @@ function updateFormSuccess(tx) {
 
 
 /*
+* eliminar registros
+*/
+function deleteForm(){
+	if(db != null){
+		db.transaction(queryDBUpdateForm, errorDB, updateFormSuccess);
+	}
+}
+
+function queryDBUpdateForm(tx){
+	var cat = $("#cajaCategorias").find("input:checked").val();
+	tx.executeSql('DELETE FROM agenda_curso  WHERE id='+$.id);
+}
+function updateFormSuccess(tx) {
+	var selector = $("#li_"+$.id);
+	
+	var selector = $("#li_"+$.id).clone(true);
+	selector.find("img").attr("src", $.imageURL);
+	selector.find("a:first").find("span").html($("#ti_nombre").val());
+	
+	
+	$("#li_"+$.id).remove();
+	
+	var cat = $("#cajaCategorias").find("input:checked").val();
+	var lista = $("#lista_" + cat + " ul")
+	lista.append(selector).listview('refresh');
+	
+	
+	$.mobile.changePage("#home");
+}
+
+
+
+/*
 * creando registros
 */
 function saveNewForm(){
@@ -270,7 +310,6 @@ function saveNewForm(){
 function queryDBInsertForm(tx){
 	var cat = $("#cajaCategorias").find("input:checked").val();
 	
-	//tx.executeSql("INSERT INTO agenda_curso (nombre,apellidos,telefono,categoria,foto,email) VALUES ('"+$("#ti_nombre").val()+"','"+$("#ti_apellidos").val()+"','"+$("#ti_telefono").val()+"','"+cat+"','"+$.imageURL+"','"+$("#ti_mail").val()+"')", [], newFormSuccess, errorDB);
 	tx.executeSql("INSERT INTO agenda_curso (nombre,foto,telefono,email,domicilio,categoria,nota) VALUES ('"+$("#ti_nombre").val()+"','"+$("#ti_fotoo").val()+"','"+$("#ti_telefono").val()+"','"+$("#ti_mail").val()+"','"+$("#ti_domicilio").val()+"','"+cat+"','"+$("#ti_nota").val()+"')", [], newFormSuccess, errorDB);}
 
 function newFormSuccess(tx, results) {
