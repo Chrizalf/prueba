@@ -95,6 +95,7 @@
 		<h5 id="domicilio"></h5>
 		<h5 id="nota"></h5>
         </div>
+		<button id="b_eliminar">Eliminar</button>
 
 
       </div>
@@ -169,26 +170,6 @@
     
     
     
-    
-    
-    <!--buscador de contactos de la agenda-->
-    <div data-role="page" id="contactos">
-      <div data-role="header">
-      	<div class="ui-btn-left">
-            <a href="#" data-role="button" data-inline="true" data-icon="back" data-iconpos="notext" data-rel="back">Volver</a>
-        	</div>
-        <h1>Contactos</h1>
-      </div>
-      <div data-role="content" align="center">
-        <div data-role="fieldcontain">
-          <input type="text" name="ti_search" id="ti_search" value="" placeholder="Nombre" />
-        </div>
-        <button id="b_buscar">Buscar</button>
-      </div>
-    </div>
-    
-    
-    
     <!--página de ayuda-->
     <div data-role="page" id="infoservicio">
       <div data-role="header">
@@ -199,10 +180,10 @@
       </div>
       <div data-role="content">
      	 <ul id="listaAyuda">
-        	<li>Usa el + para añadir contactos</li>
-            <li>Con el segundo botón del header podrás añadir contactos de tu agenda</li>
-            <li>Selecciona la categoría de contactos y podrás verlos</li>
-            <li>Haz click en el ojo para ver los detalles del contacto y para actuar sobre él</li>
+        	<li>Es una aplicacion de tipo agenda que se usa para guardar contactos de restaurantes, servicios y/o amigos</li>
+            <li>Se crea un nuevo contacto usando el icono + </li>
+            <li>Se modifica la informacion del contacto al seleccionarlo</li>
+            <li>Se elimina un contacto mediante la opcion de eliminar en la ventana de edicion del contacto</li>
         </ul>
       </div>
 		
@@ -230,15 +211,14 @@
         	<li>Nombre: Christian Zamora Alfaro</li>
             <li>Carrera: Licenciatura en Ingenieria en Sistemas de Informacion</li>
             <li>Materia: Desarrollo de Aplicaciones para Comercio Electrónico</li>
-            <li>Haz click en el ojo para ver los detalles del contacto y para actuar sobre él</li>
         </ul>
-		  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="UKJW7GQ2Z3GXU" />
-<input type="image" width="100" src="images/donar.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donar con el botón PayPal" />
-<img alt="" border="0" src="https://www.paypal.com/es_MX/i/scr/pixel.gif" width="1" height="1" />
-</form>
       </div>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="hosted_button_id" value="RFACKX6N9C8X8" />
+<input type="image" src="https://www.paypalobjects.com/en_US/MX/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_MX/i/scr/pixel.gif" width="1" height="1" />
+</form>
 		
   <div align="center" data-role="footer">
 	  
