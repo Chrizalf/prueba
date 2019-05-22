@@ -27,13 +27,13 @@
     
     
     
-  <!--  esta es la página de entrada: el listado de contactos-->
+  <!--  Home-->
     <div data-role="page" id="home">
       <div data-role="header">
         <div class="ui-btn-left">
         <a href="#form"><img src="themes/images/icons-png/plus-black.png" width="150%"></a>
         </div>
-      	<h1>Mi Agenda</h1>
+      	<h1>Agenda</h1>
         <div class="ui-btn-right">
         <a href="#acerca"><img src="themes/images/icons-png/info-black.png" width="150%"></a>
         </div>
@@ -74,11 +74,11 @@
     
     
     
-   <!-- esta página es la de detalle-->
+   <!-- Detalle-->
     <div data-role="page" id="detalle">
       <div data-role="header">
           <div class="ui-btn-left">
-            <a href="#" data-role="button" data-inline="true" data-icon="back" data-iconpos="notext" data-rel="back">Volver</a>
+            <a href="#" data-role="button" data-inline="true" data-icon="back" data-iconpos="notext" data-rel="back"></a>
         	</div>
         <h1>Detalle</h1>
       </div>
@@ -90,8 +90,8 @@
 
      	<div class="caja_blanca">
         <h1 id="nombre"></h1>
-         <div ><span id="num_tel"></span> <a href="#" data-role="button" data-inline="true" data-icon="phone" data-iconpos="notext" id="telefono">Llamar</a></div>
-        <div id="email"><span id="label_mail"></span> <a href="#" data-role="button" data-inline="true" data-icon="mail" data-iconpos="notext">Llamar</a></div>
+         <div ><span id="num_tel"></span> <a href="#" data-role="button" data-inline="true" data-icon="phone" data-iconpos="notext" id="telefono"></a></div>
+        <div id="email"><span id="label_mail"></span> <a href="#" data-role="button" data-inline="true" data-icon="mail" data-iconpos="notext"></a></div>
 		<h5 id="domicilio"></h5>
 		<h5 id="nota"></h5>
         </div>
@@ -106,13 +106,13 @@
     
     
     
-    <!--página de edición-->
+    <!--Edición-->
     <div data-role="page" id="form">
       <div data-role="header">
       	<div class="ui-btn-left">
             <a href="#form"><img src="themes/images/icons-png/back-black.png" width="150%"></a>
         	</div>
-        <h1>Nuevo / editar</h1>
+        <h1>Agregar</h1>
       </div>
        <div data-role="content">
            <div class="caja_blanca">
@@ -170,7 +170,7 @@
     
     
     
-    <!--página de ayuda-->
+    <!--Informacion del servicio-->
     <div data-role="page" id="infoservicio">
       <div data-role="header">
       	<div class="ui-btn-left">
@@ -197,11 +197,11 @@
     </div>
 		
 		
-	    <!--página acerca de mi-->
+	    <!--Acerca de mi-->
     <div data-role="page" id="acerca">
       <div data-role="header">
       	<div class="ui-btn-left">
-            <a href="#" data-role="button" data-inline="true" data-icon="back" data-iconpos="notext" data-rel="back">Volver</a>
+            <a href="#home"><img src="themes/images/icons-png/back-black.png" width="100%" alt=""></a>
         	</div>
         <h1>Acerca de mi</h1>
       </div>
@@ -216,7 +216,7 @@
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="7HU959NKXQSDE">
-<input type="image" src="images/donar.png" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+<input type="image" width="200" height="56" src="images/donar.png" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
 <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
 </form>
 
@@ -233,7 +233,7 @@
 		
 		
 		
-<!--Pagina de dialogo-->
+<!--Dialogo-->
 <div id="dialogo">		
 	<p>Aplicación desarrollada mediante PhoneGap para Proyecto Final</p>		
 	<p><small>Por Christian Zamora - Mayo de 2019</small></p>	
