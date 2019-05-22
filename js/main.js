@@ -44,7 +44,7 @@ function onDeviceReady(){
 		 }else{
 			saveNewForm();
 		 }
-	 }
+	 });
 	 	$("#b_eliminar").click(function(e){
 		if($.id != -1){
 		 	deleteForm();
